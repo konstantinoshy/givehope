@@ -1,0 +1,412 @@
+endpoint,field,payload,http_status,vulnerable,reason
+GET /explore.php,q,' OR '1'='1,200,False,No vulnerability indicator
+POST /login.php,email,' OR '1'='1,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR '1'='1,200,False,No vulnerability indicator
+GET /explore.php,q,' OR 1=1--,200,False,No vulnerability indicator
+POST /login.php,email,' OR 1=1--,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR 1=1--,200,False,No vulnerability indicator
+GET /explore.php,q,' OR 1=1#,200,False,No vulnerability indicator
+POST /login.php,email,' OR 1=1#,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR 1=1#,200,False,No vulnerability indicator
+GET /explore.php,q,' OR 1=1/*,200,False,No vulnerability indicator
+POST /login.php,email,' OR 1=1/*,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR 1=1/*,200,False,No vulnerability indicator
+GET /explore.php,q,admin'--,200,False,No vulnerability indicator
+POST /login.php,email,admin'--,200,False,No vulnerability indicator
+GET /explore.php,cat,admin'--,200,False,No vulnerability indicator
+GET /explore.php,q,admin' #,200,False,No vulnerability indicator
+POST /login.php,email,admin' #,200,False,No vulnerability indicator
+GET /explore.php,cat,admin' #,200,False,No vulnerability indicator
+GET /explore.php,q,admin'/*,200,False,No vulnerability indicator
+POST /login.php,email,admin'/*,200,False,No vulnerability indicator
+GET /explore.php,cat,admin'/*,200,False,No vulnerability indicator
+GET /explore.php,q,' OR ''=',200,False,No vulnerability indicator
+POST /login.php,email,' OR ''=',200,False,No vulnerability indicator
+GET /explore.php,cat,' OR ''=',200,False,No vulnerability indicator
+GET /explore.php,q,' OR 'x'='x,200,False,No vulnerability indicator
+POST /login.php,email,' OR 'x'='x,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR 'x'='x,200,False,No vulnerability indicator
+GET /explore.php,q,') OR ('1'='1,200,False,No vulnerability indicator
+POST /login.php,email,') OR ('1'='1,200,False,No vulnerability indicator
+GET /explore.php,cat,') OR ('1'='1,200,False,No vulnerability indicator
+GET /explore.php,q,') OR ('1'='1'--,200,False,No vulnerability indicator
+POST /login.php,email,') OR ('1'='1'--,200,False,No vulnerability indicator
+GET /explore.php,cat,') OR ('1'='1'--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR '1'='1,200,False,No vulnerability indicator
+POST /login.php,email,1' OR '1'='1,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR '1'='1,200,False,No vulnerability indicator
+GET /explore.php,q,1 OR 1=1,200,False,No vulnerability indicator
+POST /login.php,email,1 OR 1=1,200,False,No vulnerability indicator
+GET /explore.php,cat,1 OR 1=1,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR '1'='1'--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR '1'='1'--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR '1'='1'--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR '1'='1'/*,200,False,No vulnerability indicator
+POST /login.php,email,1' OR '1'='1'/*,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR '1'='1'/*,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR '1'='1'#,200,False,No vulnerability indicator
+POST /login.php,email,1' OR '1'='1'#,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR '1'='1'#,200,False,No vulnerability indicator
+GET /explore.php,q,' UNION SELECT NULL--,200,False,No vulnerability indicator
+POST /login.php,email,' UNION SELECT NULL--,200,False,No vulnerability indicator
+GET /explore.php,cat,' UNION SELECT NULL--,200,False,No vulnerability indicator
+GET /explore.php,q,"' UNION SELECT NULL,NULL--",200,False,No vulnerability indicator
+POST /login.php,email,"' UNION SELECT NULL,NULL--",200,False,No vulnerability indicator
+GET /explore.php,cat,"' UNION SELECT NULL,NULL--",200,False,No vulnerability indicator
+GET /explore.php,q,"' UNION SELECT NULL,NULL,NULL--",200,False,No vulnerability indicator
+POST /login.php,email,"' UNION SELECT NULL,NULL,NULL--",200,False,No vulnerability indicator
+GET /explore.php,cat,"' UNION SELECT NULL,NULL,NULL--",200,False,No vulnerability indicator
+GET /explore.php,q,"1' UNION SELECT 1,2,3--",200,False,No vulnerability indicator
+POST /login.php,email,"1' UNION SELECT 1,2,3--",200,False,No vulnerability indicator
+GET /explore.php,cat,"1' UNION SELECT 1,2,3--",200,False,No vulnerability indicator
+GET /explore.php,q,' UNION ALL SELECT NULL--,200,False,No vulnerability indicator
+POST /login.php,email,' UNION ALL SELECT NULL--,200,False,No vulnerability indicator
+GET /explore.php,cat,' UNION ALL SELECT NULL--,200,False,No vulnerability indicator
+GET /explore.php,q,1; SELECT 1--,200,False,No vulnerability indicator
+POST /login.php,email,1; SELECT 1--,200,False,No vulnerability indicator
+GET /explore.php,cat,1; SELECT 1--,200,False,No vulnerability indicator
+GET /explore.php,q,1; DROP TABLE users--,200,False,No vulnerability indicator
+POST /login.php,email,1; DROP TABLE users--,200,False,No vulnerability indicator
+GET /explore.php,cat,1; DROP TABLE users--,200,False,No vulnerability indicator
+GET /explore.php,q,1'; DROP TABLE users--,200,False,No vulnerability indicator
+POST /login.php,email,1'; DROP TABLE users--,200,False,No vulnerability indicator
+GET /explore.php,cat,1'; DROP TABLE users--,200,False,No vulnerability indicator
+GET /explore.php,q,1'; DROP TABLE campaigns--,200,False,No vulnerability indicator
+POST /login.php,email,1'; DROP TABLE campaigns--,200,False,No vulnerability indicator
+GET /explore.php,cat,1'; DROP TABLE campaigns--,200,False,No vulnerability indicator
+GET /explore.php,q,'; WAITFOR DELAY '0:0:5'--,200,False,No vulnerability indicator
+POST /login.php,email,'; WAITFOR DELAY '0:0:5'--,200,False,No vulnerability indicator
+GET /explore.php,cat,'; WAITFOR DELAY '0:0:5'--,200,False,No vulnerability indicator
+GET /explore.php,q,1' AND SLEEP(5)--,200,False,No vulnerability indicator
+POST /login.php,email,1' AND SLEEP(5)--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' AND SLEEP(5)--,200,False,No vulnerability indicator
+GET /explore.php,q,1' AND SLEEP(5)#,200,False,No vulnerability indicator
+POST /login.php,email,1' AND SLEEP(5)#,200,False,No vulnerability indicator
+GET /explore.php,cat,1' AND SLEEP(5)#,200,False,No vulnerability indicator
+GET /explore.php,q,1' AND 1=1--,200,False,No vulnerability indicator
+POST /login.php,email,1' AND 1=1--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' AND 1=1--,200,False,No vulnerability indicator
+GET /explore.php,q,1' AND 1=2--,200,False,No vulnerability indicator
+POST /login.php,email,1' AND 1=2--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' AND 1=2--,200,False,No vulnerability indicator
+GET /explore.php,q,' OR 1=1 LIMIT 1--,200,False,No vulnerability indicator
+POST /login.php,email,' OR 1=1 LIMIT 1--,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR 1=1 LIMIT 1--,200,False,No vulnerability indicator
+GET /explore.php,q,' OR 1=1 LIMIT 1 OFFSET 1--,200,False,No vulnerability indicator
+POST /login.php,email,' OR 1=1 LIMIT 1 OFFSET 1--,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR 1=1 LIMIT 1 OFFSET 1--,200,False,No vulnerability indicator
+GET /explore.php,q,1' ORDER BY 1--,200,False,No vulnerability indicator
+POST /login.php,email,1' ORDER BY 1--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' ORDER BY 1--,200,False,No vulnerability indicator
+GET /explore.php,q,1' ORDER BY 10--,200,False,No vulnerability indicator
+POST /login.php,email,1' ORDER BY 10--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' ORDER BY 10--,200,False,No vulnerability indicator
+GET /explore.php,q,1' ORDER BY 100--,200,False,No vulnerability indicator
+POST /login.php,email,1' ORDER BY 100--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' ORDER BY 100--,200,False,No vulnerability indicator
+GET /explore.php,q,1' GROUP BY 1--,200,False,No vulnerability indicator
+POST /login.php,email,1' GROUP BY 1--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' GROUP BY 1--,200,False,No vulnerability indicator
+GET /explore.php,q,1' HAVING 1=1--,200,False,No vulnerability indicator
+POST /login.php,email,1' HAVING 1=1--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' HAVING 1=1--,200,False,No vulnerability indicator
+GET /explore.php,q,' OR username LIKE '%,200,False,No vulnerability indicator
+POST /login.php,email,' OR username LIKE '%,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR username LIKE '%,200,False,No vulnerability indicator
+GET /explore.php,q,' OR email LIKE '%,200,False,No vulnerability indicator
+POST /login.php,email,' OR email LIKE '%,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR email LIKE '%,200,False,No vulnerability indicator
+GET /explore.php,q,x' OR 1=1 OR 'x'='y,200,False,No vulnerability indicator
+POST /login.php,email,x' OR 1=1 OR 'x'='y,200,False,No vulnerability indicator
+GET /explore.php,cat,x' OR 1=1 OR 'x'='y,200,False,No vulnerability indicator
+GET /explore.php,q,"x"" OR ""1""=""1",200,False,No vulnerability indicator
+POST /login.php,email,"x"" OR ""1""=""1",200,False,No vulnerability indicator
+GET /explore.php,cat,"x"" OR ""1""=""1",200,False,No vulnerability indicator
+GET /explore.php,q,x' OR 1=1 AND 'x'='x,200,False,No vulnerability indicator
+POST /login.php,email,x' OR 1=1 AND 'x'='x,200,False,No vulnerability indicator
+GET /explore.php,cat,x' OR 1=1 AND 'x'='x,200,False,No vulnerability indicator
+GET /explore.php,q,0 OR 1=1,200,False,No vulnerability indicator
+POST /login.php,email,0 OR 1=1,200,False,No vulnerability indicator
+GET /explore.php,cat,0 OR 1=1,200,False,No vulnerability indicator
+GET /explore.php,q,false OR true--,200,False,No vulnerability indicator
+POST /login.php,email,false OR true--,200,False,No vulnerability indicator
+GET /explore.php,cat,false OR true--,200,False,No vulnerability indicator
+GET /explore.php,q,' OR 'a'='a,200,False,No vulnerability indicator
+POST /login.php,email,' OR 'a'='a,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR 'a'='a,200,False,No vulnerability indicator
+GET /explore.php,q,') OR ('a'='a,200,False,No vulnerability indicator
+POST /login.php,email,') OR ('a'='a,200,False,No vulnerability indicator
+GET /explore.php,cat,') OR ('a'='a,200,False,No vulnerability indicator
+GET /explore.php,q,1' AND '1'='1,200,False,No vulnerability indicator
+POST /login.php,email,1' AND '1'='1,200,False,No vulnerability indicator
+GET /explore.php,cat,1' AND '1'='1,200,False,No vulnerability indicator
+GET /explore.php,q,1' AND '1'='2,200,False,No vulnerability indicator
+POST /login.php,email,1' AND '1'='2,200,False,No vulnerability indicator
+GET /explore.php,cat,1' AND '1'='2,200,False,No vulnerability indicator
+GET /explore.php,q,' OR 1=1;--,200,False,No vulnerability indicator
+POST /login.php,email,' OR 1=1;--,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR 1=1;--,200,False,No vulnerability indicator
+GET /explore.php,q,1'; EXEC xp_cmdshell('dir')--,200,False,No vulnerability indicator
+POST /login.php,email,1'; EXEC xp_cmdshell('dir')--,200,False,No vulnerability indicator
+GET /explore.php,cat,1'; EXEC xp_cmdshell('dir')--,200,False,No vulnerability indicator
+GET /explore.php,q,"1' AND EXTRACTVALUE(1,CONCAT(0x7e,VERSION()))--",200,False,No vulnerability indicator
+POST /login.php,email,"1' AND EXTRACTVALUE(1,CONCAT(0x7e,VERSION()))--",200,False,No vulnerability indicator
+GET /explore.php,cat,"1' AND EXTRACTVALUE(1,CONCAT(0x7e,VERSION()))--",200,False,No vulnerability indicator
+GET /explore.php,q,"1' AND (SELECT 1 FROM (SELECT COUNT(*),CONCAT(VERSION(),FLOOR(RAND(0)*2))x FROM information_schema.tables GROUP BY x)a)--",200,False,No vulnerability indicator
+POST /login.php,email,"1' AND (SELECT 1 FROM (SELECT COUNT(*),CONCAT(VERSION(),FLOOR(RAND(0)*2))x FROM information_schema.tables GROUP BY x)a)--",200,False,No vulnerability indicator
+GET /explore.php,cat,"1' AND (SELECT 1 FROM (SELECT COUNT(*),CONCAT(VERSION(),FLOOR(RAND(0)*2))x FROM information_schema.tables GROUP BY x)a)--",200,False,No vulnerability indicator
+GET /explore.php,q,"1' AND UPDATEXML(1,CONCAT(0x7e,VERSION()),1)--",200,False,No vulnerability indicator
+POST /login.php,email,"1' AND UPDATEXML(1,CONCAT(0x7e,VERSION()),1)--",200,False,No vulnerability indicator
+GET /explore.php,cat,"1' AND UPDATEXML(1,CONCAT(0x7e,VERSION()),1)--",200,False,No vulnerability indicator
+GET /explore.php,q,"1' AND 1=CONVERT(int,(SELECT @@version))--",200,False,No vulnerability indicator
+POST /login.php,email,"1' AND 1=CONVERT(int,(SELECT @@version))--",200,False,No vulnerability indicator
+GET /explore.php,cat,"1' AND 1=CONVERT(int,(SELECT @@version))--",200,False,No vulnerability indicator
+GET /explore.php,q,1' AND 1=CAST((SELECT @@version) AS int)--,200,False,No vulnerability indicator
+POST /login.php,email,1' AND 1=CAST((SELECT @@version) AS int)--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' AND 1=CAST((SELECT @@version) AS int)--,200,False,No vulnerability indicator
+GET /explore.php,q,' OR 1=1 INTO OUTFILE '/tmp/x'--,200,False,No vulnerability indicator
+POST /login.php,email,' OR 1=1 INTO OUTFILE '/tmp/x'--,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR 1=1 INTO OUTFILE '/tmp/x'--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1 PROCEDURE ANALYSE()--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1 PROCEDURE ANALYSE()--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1 PROCEDURE ANALYSE()--,200,False,No vulnerability indicator
+GET /explore.php,q,"1' OR '1'='1' UNION SELECT null,table_name FROM information_schema.tables--",200,False,No vulnerability indicator
+POST /login.php,email,"1' OR '1'='1' UNION SELECT null,table_name FROM information_schema.tables--",200,False,No vulnerability indicator
+GET /explore.php,cat,"1' OR '1'='1' UNION SELECT null,table_name FROM information_schema.tables--",200,False,No vulnerability indicator
+GET /explore.php,q,"' UNION SELECT 1,load_file('/etc/passwd')--",200,False,No vulnerability indicator
+POST /login.php,email,"' UNION SELECT 1,load_file('/etc/passwd')--",200,False,No vulnerability indicator
+GET /explore.php,cat,"' UNION SELECT 1,load_file('/etc/passwd')--",200,False,No vulnerability indicator
+GET /explore.php,q,"1' AND MID(VERSION(),1,1)='5",200,False,No vulnerability indicator
+POST /login.php,email,"1' AND MID(VERSION(),1,1)='5",200,False,No vulnerability indicator
+GET /explore.php,cat,"1' AND MID(VERSION(),1,1)='5",200,False,No vulnerability indicator
+GET /explore.php,q,"1' AND SUBSTRING(@@version,1,1)='5",200,False,No vulnerability indicator
+POST /login.php,email,"1' AND SUBSTRING(@@version,1,1)='5",200,False,No vulnerability indicator
+GET /explore.php,cat,"1' AND SUBSTRING(@@version,1,1)='5",200,False,No vulnerability indicator
+GET /explore.php,q,"1' AND ASCII(SUBSTRING((SELECT password_hash FROM users LIMIT 1),1,1))>0--",200,False,No vulnerability indicator
+POST /login.php,email,"1' AND ASCII(SUBSTRING((SELECT password_hash FROM users LIMIT 1),1,1))>0--",200,False,No vulnerability indicator
+GET /explore.php,cat,"1' AND ASCII(SUBSTRING((SELECT password_hash FROM users LIMIT 1),1,1))>0--",200,False,No vulnerability indicator
+GET /explore.php,q,1' OR EXISTS(SELECT * FROM users)--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR EXISTS(SELECT * FROM users)--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR EXISTS(SELECT * FROM users)--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR NOT EXISTS(SELECT * FROM users)--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR NOT EXISTS(SELECT * FROM users)--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR NOT EXISTS(SELECT * FROM users)--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1-- -,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1-- -,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1-- -,200,False,No vulnerability indicator
+GET /explore.php,q,1'/**/OR/**/1=1--,200,False,No vulnerability indicator
+POST /login.php,email,1'/**/OR/**/1=1--,200,False,No vulnerability indicator
+GET /explore.php,cat,1'/**/OR/**/1=1--,200,False,No vulnerability indicator
+GET /explore.php,q,1'%20OR%201=1--,200,False,No vulnerability indicator
+POST /login.php,email,1'%20OR%201=1--,200,False,No vulnerability indicator
+GET /explore.php,cat,1'%20OR%201=1--,200,False,No vulnerability indicator
+GET /explore.php,q,1'%09OR%091=1--,200,False,No vulnerability indicator
+POST /login.php,email,1'%09OR%091=1--,200,False,No vulnerability indicator
+GET /explore.php,cat,1'%09OR%091=1--,200,False,No vulnerability indicator
+GET /explore.php,q,1'%0AOR%0A1=1--,200,False,No vulnerability indicator
+POST /login.php,email,1'%0AOR%0A1=1--,200,False,No vulnerability indicator
+GET /explore.php,cat,1'%0AOR%0A1=1--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; %00,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; %00,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; %00,200,False,No vulnerability indicator
+GET /explore.php,q,1 ' OR 1=1--,200,False,No vulnerability indicator
+POST /login.php,email,1 ' OR 1=1--,200,False,No vulnerability indicator
+GET /explore.php,cat,1 ' OR 1=1--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1%23,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1%23,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1%23,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1%2D%2D,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1%2D%2D,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1%2D%2D,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR '1'='1'%00,200,False,No vulnerability indicator
+POST /login.php,email,1' OR '1'='1'%00,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR '1'='1'%00,200,False,No vulnerability indicator
+GET /explore.php,q,' OR 1=1%00,200,False,No vulnerability indicator
+POST /login.php,email,' OR 1=1%00,200,False,No vulnerability indicator
+GET /explore.php,cat,' OR 1=1%00,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1;#,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1;#,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1;#,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1;--%20,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1;--%20,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1;--%20,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1 LIMIT 1;--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1 LIMIT 1;--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1 LIMIT 1;--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1 OFFSET 0;--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1 OFFSET 0;--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1 OFFSET 0;--,200,False,No vulnerability indicator
+GET /explore.php,q,1' RLIKE (SELECT 1)--,200,False,No vulnerability indicator
+POST /login.php,email,1' RLIKE (SELECT 1)--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' RLIKE (SELECT 1)--,200,False,No vulnerability indicator
+GET /explore.php,q,1' REGEXP '^.*$'--,200,False,No vulnerability indicator
+POST /login.php,email,1' REGEXP '^.*$'--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' REGEXP '^.*$'--,200,False,No vulnerability indicator
+GET /explore.php,q,1' LIKE '%'--,200,False,No vulnerability indicator
+POST /login.php,email,1' LIKE '%'--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' LIKE '%'--,200,False,No vulnerability indicator
+GET /explore.php,q,1' NOT LIKE ''--,200,False,No vulnerability indicator
+POST /login.php,email,1' NOT LIKE ''--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' NOT LIKE ''--,200,False,No vulnerability indicator
+GET /explore.php,q,1' IS NULL OR 1=1--,200,False,No vulnerability indicator
+POST /login.php,email,1' IS NULL OR 1=1--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' IS NULL OR 1=1--,200,False,No vulnerability indicator
+GET /explore.php,q,1' BETWEEN 1 AND 2 OR 1=1--,200,False,No vulnerability indicator
+POST /login.php,email,1' BETWEEN 1 AND 2 OR 1=1--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' BETWEEN 1 AND 2 OR 1=1--,200,False,No vulnerability indicator
+GET /explore.php,q,"1' IN (1,2,3) OR 1=1--",200,False,No vulnerability indicator
+POST /login.php,email,"1' IN (1,2,3) OR 1=1--",200,False,No vulnerability indicator
+GET /explore.php,cat,"1' IN (1,2,3) OR 1=1--",200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1--%20%20,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1--%20%20,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1--%20%20,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1--+,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1--+,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1--+,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1%09--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1%09--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1%09--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1%0D%0A--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1%0D%0A--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1%0D%0A--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1%0A--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1%0A--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1%0A--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1%0C--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1%0C--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1%0C--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1%0B--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1%0B--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1%0B--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1%0D--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1%0D--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1%0D--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1%1A--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1%1A--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1%1A--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1%00--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1%00--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1%00--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; EXEC('malicious')--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; EXEC('malicious')--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; EXEC('malicious')--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SHUTDOWN--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SHUTDOWN--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SHUTDOWN--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; DELETE FROM users--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; DELETE FROM users--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; DELETE FROM users--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; UPDATE users SET password_hash='x'--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; UPDATE users SET password_hash='x'--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; UPDATE users SET password_hash='x'--,200,False,No vulnerability indicator
+GET /explore.php,q,"1' OR 1=1; INSERT INTO users VALUES(999,'h','h','h',1,NOW(),NULL)--",200,False,No vulnerability indicator
+POST /login.php,email,"1' OR 1=1; INSERT INTO users VALUES(999,'h','h','h',1,NOW(),NULL)--",200,False,No vulnerability indicator
+GET /explore.php,cat,"1' OR 1=1; INSERT INTO users VALUES(999,'h','h','h',1,NOW(),NULL)--",200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; CREATE TABLE pwned(id INT)--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; CREATE TABLE pwned(id INT)--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; CREATE TABLE pwned(id INT)--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; ALTER TABLE users ADD col VARCHAR(1)--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; ALTER TABLE users ADD col VARCHAR(1)--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; ALTER TABLE users ADD col VARCHAR(1)--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; TRUNCATE TABLE donations--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; TRUNCATE TABLE donations--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; TRUNCATE TABLE donations--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; GRANT ALL ON *.* TO 'x'@'%'--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; GRANT ALL ON *.* TO 'x'@'%'--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; GRANT ALL ON *.* TO 'x'@'%'--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; REVOKE ALL ON *.* FROM 'root'@'localhost'--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; REVOKE ALL ON *.* FROM 'root'@'localhost'--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; REVOKE ALL ON *.* FROM 'root'@'localhost'--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SHOW DATABASES--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SHOW DATABASES--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SHOW DATABASES--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SHOW TABLES--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SHOW TABLES--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SHOW TABLES--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT @@version--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT @@version--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT @@version--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT user()--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT user()--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT user()--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT database()--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT database()--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT database()--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT LOAD_FILE('/etc/passwd')--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT LOAD_FILE('/etc/passwd')--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT LOAD_FILE('/etc/passwd')--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT 1 INTO OUTFILE '/tmp/x'--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT 1 INTO OUTFILE '/tmp/x'--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT 1 INTO OUTFILE '/tmp/x'--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT 1 INTO DUMPFILE '/tmp/x'--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT 1 INTO DUMPFILE '/tmp/x'--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT 1 INTO DUMPFILE '/tmp/x'--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT 1 FROM dual--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT 1 FROM dual--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT 1 FROM dual--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT 1 FROM information_schema.tables--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT 1 FROM information_schema.tables--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT 1 FROM information_schema.tables--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT 1 FROM mysql.user--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT 1 FROM mysql.user--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT 1 FROM mysql.user--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT 1 FROM pg_sleep(5)--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT 1 FROM pg_sleep(5)--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT 1 FROM pg_sleep(5)--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT pg_sleep(5)--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT pg_sleep(5)--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT pg_sleep(5)--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT sleep(5)--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT sleep(5)--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT sleep(5)--,200,False,No vulnerability indicator
+GET /explore.php,q,"1' OR 1=1; SELECT benchmark(1000000,md5('x'))--",200,False,No vulnerability indicator
+POST /login.php,email,"1' OR 1=1; SELECT benchmark(1000000,md5('x'))--",200,False,No vulnerability indicator
+GET /explore.php,cat,"1' OR 1=1; SELECT benchmark(1000000,md5('x'))--",200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT count(*) FROM users--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT count(*) FROM users--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT count(*) FROM users--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT password_hash FROM users--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT password_hash FROM users--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT password_hash FROM users--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT email FROM users--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT email FROM users--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT email FROM users--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM users--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM users--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM users--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM campaigns--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM campaigns--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM campaigns--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM donations--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM donations--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM donations--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM admins--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM admins--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM admins--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM organizations--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM organizations--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM organizations--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM categories--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM categories--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM categories--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM reports--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM reports--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM reports--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM messages--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM messages--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM messages--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM gdpr_requests--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM gdpr_requests--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM gdpr_requests--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM cookie_consents--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM cookie_consents--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM cookie_consents--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM data_processing_log--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM data_processing_log--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM data_processing_log--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM documents--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM documents--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM documents--,200,False,No vulnerability indicator
+GET /explore.php,q,1' OR 1=1; SELECT * FROM campaign_updates--,200,False,No vulnerability indicator
+POST /login.php,email,1' OR 1=1; SELECT * FROM campaign_updates--,200,False,No vulnerability indicator
+GET /explore.php,cat,1' OR 1=1; SELECT * FROM campaign_updates--,200,False,No vulnerability indicator

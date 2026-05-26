@@ -1,0 +1,15 @@
+includes/config.php
+.env
+*.env
+
+public/uploads/*
+!public/uploads/.gitkeep
+
+.cursor/
+.vscode/
+.idea/
+.antigravitycli/
+Thumbs.db
+Desktop.ini
+*.log
+_tmp*
