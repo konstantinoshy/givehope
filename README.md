@@ -68,27 +68,68 @@
 
 ## Εγκατάσταση
 
-1. **Αντιγραφή project** μέσα στο `htdocs`:
-   ```
-   C:\xampp\htdocs\donations-platform
-   ```
+### 1. Λήψη κώδικα
 
-2. **Δημιουργία βάσης δεδομένων** `donations_platform` και import του schema:
-   ```
-   sql/schema.sql
-   ```
-   Μέσω phpMyAdmin ή mysql client.
+**Από GitHub (clone):**
+```bash
+git clone https://github.com/konstantinoshy/givehope.git
+```
+Τοποθέτησε τον φάκελο μέσα στο `htdocs` του XAMPP, π.χ.:
+```
+C:\xampp\htdocs\givehope
+```
 
-3. **Ρυθμίσεις** σύνδεσης στη βάση:
-   ```
-   includes/config.php
-   ```
-   Προεπιλεγμένες τιμές: `DB_HOST = 127.0.0.1`, `DB_USER = root`, `DB_PASS = ''`.
+**Ή** αντιγραφή του project σε οποιονδήποτε φάκελο στο `htdocs`.
 
-4. **Εκκίνηση** Apache & MySQL μέσω XAMPP και πρόσβαση:
+> Το όνομα του φακέλου (π.χ. `givehope` ή `donations-platform`) πρέπει να ταιριάζει με το `BASE_URL` στο βήμα 3.
+
+### 2. Βάση δεδομένων
+
+1. Άνοιξε **phpMyAdmin** (`http://localhost/phpmyadmin`)
+2. Δημιούργησε κενή βάση: `donations_platform`
+3. Import το αρχείο **`sql/schema.sql`** (περιέχει πίνακες + demo data)
+
+> Το `sql/migrations/` είναι μόνο για ενημέρωση **υπάρχουσας** βάσης. Σε νέα εγκατάσταση αρκεί το `schema.sql`.
+
+### 3. Ρυθμίσεις (`config.php`)
+
+Το `includes/config.php` **δεν υπάρχει στο repo** (τοπικές ρυθμίσεις). Δημιούργησέ το:
+
+**Windows (PowerShell):**
+```powershell
+copy includes\config.example.php includes\config.php
+```
+
+**Linux / macOS:**
+```bash
+cp includes/config.example.php includes/config.php
+```
+
+Άνοιξε το `includes/config.php` και έλεγξε:
+
+| Ρύθμιση | Προεπιλογή (XAMPP) | Σημείωση |
+|---|---|---|
+| `DB_HOST` | `127.0.0.1` | — |
+| `DB_NAME` | `donations_platform` | Ίδιο όνομα με τη βάση |
+| `DB_USER` | `root` | — |
+| `DB_PASS` | `''` (κενό) | Default XAMPP |
+| `BASE_URL` | `/givehope` | **Πρέπει να ταιριάζει με το όνομα φακέλου** |
+
+**Παράδειγμα:** Αν ο φάκελος λέγεται `donations-platform`, άλλαξε:
+```php
+define('BASE_URL', '/donations-platform');
+```
+
+### 4. Εκκίνηση
+
+1. XAMPP → **Start** Apache + MySQL
+2. Άνοιξε browser:
    ```
-   http://localhost/donations-platform/
+   http://localhost/givehope/
    ```
+   (ή `http://localhost/<όνομα-φακέλου>/`)
+
+**Admin panel:** `http://localhost/givehope/admin/login.php`
 
 ---
 
@@ -96,11 +137,11 @@
 
 Μετά το import του `schema.sql`, υπάρχουν έτοιμα seed data (οργανισμοί, χρήστες, καμπάνιες, δωρεές).
 
-| Ρόλος | Email | Password |
-|---|---|---|
-| **Admin** | `admin@platform.gr` | `password` |
-| **Οργανισμός** (Hope Foundation) | `demo@hope.org` | `password` |
-| **Χρήστης** (Μαρία Παπαδοπούλου) | `maria@example.com` | `password` |
+| Ρόλος | Email | Password | Σύνδεση |
+|---|---|---|---|
+| **Admin** | `admin@platform.gr` | `password` | `/admin/login.php` |
+| **Οργανισμός** (Hope Foundation) | `demo@hope.org` | `password` | `/login.php?type=org` |
+| **Χρήστης** (Μαρία Παπαδοπούλου) | `maria@example.com` | `password` | `/login.php?type=user` |
 
 ---
 
@@ -154,7 +195,8 @@ donations-platform/
 │       └── footer.php        #     Υποσέλιδο admin panel
 │
 ├── includes/                 # Κοινά αρχεία
-│   ├── config.php            #   Ρυθμίσεις εφαρμογής & DB
+│   ├── config.example.php    #   Πρότυπο ρυθμίσεων (αντιγραφή → config.php)
+│   ├── config.php            #   Τοπικές ρυθμίσεις (δημιουργείται τοπικά, όχι στο GitHub)
 │   ├── db.php                #   Σύνδεση βάσης (PDO)
 │   ├── auth.php              #   Authentication & Authorization
 │   ├── csrf.php              #   CSRF token protection
