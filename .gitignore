@@ -13,3 +13,7 @@ Thumbs.db
 Desktop.ini
 *.log
 _tmp*
+
+# Local ZAP scan artifacts (machine-specific session IDs/cookies)
+tools/*ZAP-Report*
+tools/*zap_report*

@@ -19,15 +19,19 @@ function redirect(string $path): void
 
 function flash(string $type, string $message): void
 {
-    if (session_status() === PHP_SESSION_NONE)
-        session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        require_once __DIR__ . '/auth.php';
+        secure_session_start();
+    }
     $_SESSION['_flash'] = ['type' => $type, 'message' => $message];
 }
 
 function get_flash(): ?array
 {
-    if (session_status() === PHP_SESSION_NONE)
-        session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        require_once __DIR__ . '/auth.php';
+        secure_session_start();
+    }
     $flash = $_SESSION['_flash'] ?? null;
     unset($_SESSION['_flash']);
     return $flash;

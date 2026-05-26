@@ -2,9 +2,62 @@
 require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/functions.php';
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+if (!function_exists('secure_session_start')) {
+    function secure_session_start(): void {
+        if (session_status() !== PHP_SESSION_NONE) {
+            return;
+        }
+        $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+            || (($_SERVER['SERVER_PORT'] ?? '') === '443');
+        session_set_cookie_params([
+            'lifetime' => 0,
+            'path'     => '/',
+            'domain'   => '',
+            'secure'   => $isHttps,
+            'httponly' => true,
+            'samesite' => 'Lax',
+        ]);
+        session_start();
+    }
 }
+
+if (!function_exists('send_security_headers')) {
+    /**
+     * Fallback security headers όταν το web server δεν στέλνει .htaccess directives
+     * (π.χ. PHP built-in server, nginx χωρίς αντίστοιχο conf).
+     * Σε XAMPP/Apache τα headers στέλνονται μέσω .htaccess για κάλυψη και των 404 pages.
+     */
+    function send_security_headers(): void {
+        if (headers_sent()) {
+            return;
+        }
+        header_remove("X-Powered-By");
+        // Αν τρέχουμε υπό Apache με mod_headers, το .htaccess τα έχει ήδη στείλει.
+        if (function_exists('apache_get_modules')
+            && in_array('mod_headers', apache_get_modules(), true)) {
+            return;
+        }
+        header("X-Content-Type-Options: nosniff");
+        header("X-Frame-Options: SAMEORIGIN");
+        header("Referrer-Policy: strict-origin-when-cross-origin");
+        header("Permissions-Policy: geolocation=(), microphone=(), camera=()");
+        header(
+            "Content-Security-Policy: "
+            . "default-src 'self'; "
+            . "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; "
+            . "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+            . "img-src 'self' data: blob: https://images.unsplash.com; "
+            . "font-src 'self' https://fonts.gstatic.com data:; "
+            . "connect-src 'self'; "
+            . "frame-ancestors 'self'; "
+            . "base-uri 'self'; "
+            . "form-action 'self'"
+        );
+    }
+}
+
+secure_session_start();
+send_security_headers();
 
 define('AUTH_REFRESH_INTERVAL', 300); // 5 λεπτά
 
