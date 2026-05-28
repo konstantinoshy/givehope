@@ -127,6 +127,10 @@ $image = $campaign['image_url'] ?: $defaultImage;
 
 $pageTitle = 'Δωρεά - ' . $campaign['title'];
 require_once __DIR__ . '/includes/header.php';
+
+// Prefill: logged-in profile → empty (donate.php uses GET redirects on error, so no POST fallback needed)
+$prefillDonorName  = $currentUser['name']  ?? $currentOrg['name']  ?? '';
+$prefillDonorEmail = $currentUser['email'] ?? $currentOrg['email'] ?? '';
 ?>
 
 <div class="donate-page">
@@ -232,13 +236,15 @@ require_once __DIR__ . '/includes/header.php';
                 <div class="form-section">
                     <label>Όνομα <span id="donorNameRequired">*</span></label>
                     <input type="text" name="donor_name" id="donorNameInput" placeholder="Το όνομά σας" required
-                        data-error="Συμπληρώστε το όνομά σας.">
+                        data-error="Συμπληρώστε το όνομά σας."
+                        value="<?php echo e($prefillDonorName); ?>">
                 </div>
 
                 <div class="form-section">
                     <label>Email <span id="donorEmailRequired">*</span></label>
                     <input type="email" name="donor_email" id="donorEmailInput" placeholder="email@example.com" required
-                        data-error="Συμπληρώστε έγκυρο email.">
+                        data-error="Συμπληρώστε έγκυρο email."
+                        value="<?php echo e($prefillDonorEmail); ?>">
                 </div>
 
                 <div class="form-section">

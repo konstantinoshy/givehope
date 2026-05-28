@@ -56,6 +56,10 @@ if (is_post()) {
     $sent = true;
   }
 }
+
+// Prefill: POST (retains input on validation error) → logged-in profile → empty
+$prefillName  = $_POST['name']  ?? $currentUser['name']  ?? $currentOrg['name']  ?? '';
+$prefillEmail = $_POST['email'] ?? $currentUser['email'] ?? $currentOrg['email'] ?? '';
 ?>
 
 <div style="max-width: 560px; margin: 120px auto 60px; padding: 0 24px;">
@@ -90,11 +94,11 @@ if (is_post()) {
         <div class="row">
           <div>
             <label>Ονοματεπώνυμο *</label>
-            <input name="name" required value="<?php echo e($_POST['name'] ?? ''); ?>">
+            <input name="name" required value="<?php echo e($prefillName); ?>">
           </div>
           <div>
             <label>Email *</label>
-            <input name="email" type="email" required value="<?php echo e($_POST['email'] ?? ''); ?>">
+            <input name="email" type="email" required value="<?php echo e($prefillEmail); ?>">
           </div>
         </div>
 
