@@ -82,6 +82,12 @@ $defaultImage = 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=
         <div class="lbl">Συγκεντρώθηκαν</div>
       </div>
     </div>
+
+    <div class="hr"></div>
+
+    <div class="row">
+      <a class="btn" href="<?php echo BASE_URL; ?>/dashboard/my-data.php" style="justify-content: center;">🛡️ Τα Δεδομένα μου (GDPR)</a>
+    </div>
   </div>
 
   <!-- Λίστα Εράνων -->

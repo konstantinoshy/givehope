@@ -80,10 +80,9 @@ $statusLabels = [
     <div class="hr"></div>
 
     <div class="row">
-      <a class="btn" href="<?php echo BASE_URL; ?>/dashboard/donations.php" style="justify-content: center;">📋
-        Δωρεές</a>
-      <a class="btn" href="<?php echo BASE_URL; ?>/dashboard/profile.php" style="justify-content: center;">⚙️
-        Ρυθμίσεις</a>
+      <a class="btn" href="<?php echo BASE_URL; ?>/dashboard/donations.php" style="justify-content: center;">📋 Δωρεές</a>
+      <a class="btn" href="<?php echo BASE_URL; ?>/dashboard/profile.php" style="justify-content: center;">⚙️ Ρυθμίσεις</a>
+      <a class="btn" href="<?php echo BASE_URL; ?>/dashboard/my-data.php" style="justify-content: center;">🛡️ Δεδομένα GDPR</a>
     </div>
   </div>
 
