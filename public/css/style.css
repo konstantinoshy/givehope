@@ -401,8 +401,7 @@ img {
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  opacity: 0;
-
+  opacity: 1;
 }
 
 .hero-title .serif-part {
@@ -413,8 +412,7 @@ img {
   font-style: italic;
   letter-spacing: -0.04em;
   margin-top: -0.1em;
-  opacity: 0;
-
+  opacity: 1;
 }
 
 .hero-subtitle {
@@ -425,16 +423,14 @@ img {
   max-width: 600px;
   line-height: 1.5;
   font-weight: 400;
-  opacity: 0;
-
+  opacity: 1;
 }
 
 .hero-actions {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  opacity: 0;
-
+  opacity: 1;
 }
 
 .btn-hero-primary {
@@ -506,8 +502,17 @@ img {
   gap: 24px;
   flex-wrap: wrap;
   margin-top: 4rem;
-  opacity: 0;
+  opacity: 1;
+}
 
+/* Only hide when JS is confirmed ready AND GSAP is expected to take over.
+   The `html.js-failed` safety override is implicit: js-failed removes js-ready. */
+html.js-ready .hero-title .sans-part,
+html.js-ready .hero-title .serif-part,
+html.js-ready .hero-subtitle,
+html.js-ready .hero-actions,
+html.js-ready .hero-trust {
+  opacity: 0;
 }
 
 .trust-item {

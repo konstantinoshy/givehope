@@ -618,9 +618,58 @@ select option:checked {
     }
 }
 
+/* ===== LAPTOP BREAKPOINT (sidebar visible but tight space) ===== */
+@media (max-width: 1400px) {
+    .main-content {
+        padding: 28px 24px;
+    }
+
+    /* Make card scrollable when table overflows */
+    .card {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table {
+        font-size: 13px;
+    }
+
+    .table th,
+    .table td {
+        padding: 10px 10px;
+        white-space: nowrap;
+    }
+
+    /* Allow name/email columns to wrap if needed */
+    .table td:nth-child(2),
+    .table td:nth-child(3) {
+        white-space: normal;
+        min-width: 120px;
+    }
+
+    .table .btn {
+        font-size: 12px;
+        padding: 5px 10px;
+        white-space: nowrap;
+    }
+}
+
 @media (max-width: 1200px) {
     .quick-actions-row {
         flex-wrap: wrap;
+    }
+
+    .main-content {
+        padding: 24px 20px;
+    }
+
+    .table {
+        font-size: 12px;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px 8px;
     }
 }
 

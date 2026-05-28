@@ -139,7 +139,7 @@ $statusLabels = [
               <a class="btn"
                 href="<?php echo BASE_URL; ?>/dashboard/campaign-edit.php?id=<?php echo (int) $c['id']; ?>">Επεξεργασία</a>
               <form method="post" action="<?php echo BASE_URL; ?>/dashboard/campaign-delete.php" style="display:inline;"
-                onsubmit="return confirm('Σίγουρα διαγραφή;');">
+                data-confirm="Σίγουρα διαγραφή;">
                 <?php echo csrf_field(); ?>
                 <input type="hidden" name="id" value="<?php echo (int) $c['id']; ?>">
                 <button type="submit" class="btn danger">Διαγραφή</button>

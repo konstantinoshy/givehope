@@ -194,9 +194,7 @@ require_once __DIR__ . '/includes/header.php';
         <?php endforeach; ?>
       </div>
       
-      <div id="verification-notice" class="notice warn small" style="margin-bottom: 16px; display: none;">
-        ⚠️ Αυτή η κατηγορία απαιτεί επαλήθευση με δικαιολογητικά (π.χ. ιατρική γνωμάτευση).
-      </div>
+
 
       <!-- Τίτλος -->
       <label>Τίτλος εράνου * <span class="char-count" id="titleCount"></span></label>
@@ -259,17 +257,6 @@ require_once __DIR__ . '/includes/header.php';
   </div>
 </div>
 
-<script>
-// Εμφάνιση ειδοποίησης επαλήθευσης για κατηγορίες που το απαιτούν
-document.querySelectorAll('.category-option input').forEach(input => {
-  input.addEventListener('change', function() {
-    const notice = document.getElementById('verification-notice');
-    const requires = this.closest('.category-option').dataset.requires;
-    notice.style.display = requires === '1' ? 'block' : 'none';
-  });
-});
-// Ενεργοποίηση κατά τη φόρτωση
-document.querySelector('.category-option input:checked')?.dispatchEvent(new Event('change'));
-</script>
+
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

@@ -439,7 +439,7 @@ require_once __DIR__ . '/../includes/header.php';
       </summary>
 
       <form method="post" class="js-validate" style="margin-top: 20px;"
-        onsubmit="return confirm('Είστε σίγουροι ότι θέλετε να διαγράψετε τον λογαριασμό σας;');">
+        data-confirm="Είστε σίγουροι ότι θέλετε να διαγράψετε τον λογαριασμό σας;">
         <?php echo csrf_field(); ?>
         <input type="hidden" name="action" value="delete">
 

@@ -1,18 +1,31 @@
-/**
- * GiveHope - Animations
- * Powered by GSAP & ScrollTrigger
- */
+(function () {
+  'use strict';
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Make sure GSAP is loaded
-    if (typeof gsap === "undefined") {
-        console.error("GSAP is not loaded.");
-        return;
+  function revealAll() {
+    // Hard-clears the hiding class so CSS opacity:1 takes over.
+    document.documentElement.classList.remove('js-ready');
+    document.documentElement.classList.add('js-failed');
+    if (window.__heroRevealTimeout) {
+      clearTimeout(window.__heroRevealTimeout);
+    }
+  }
+
+  function init() {
+    // Guard: if GSAP didn't load (CDN + local fallback both failed),
+    // reveal everything and exit cleanly.
+    if (typeof gsap === 'undefined') {
+      console.warn('[hero] GSAP unavailable — falling back to static layout.');
+      revealAll();
+      return;
     }
 
-    // Register ScrollTrigger if available
-    if (typeof ScrollTrigger !== "undefined") {
-        gsap.registerPlugin(ScrollTrigger);
+    // Cancel the safety-net timeout — we're taking over from here.
+    if (window.__heroRevealTimeout) {
+      clearTimeout(window.__heroRevealTimeout);
+    }
+
+    if (typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
     }
 
     /* ==========================================
@@ -24,8 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const heroActions = document.querySelector(".hero-actions");
     const heroTrust = document.querySelector(".hero-trust");
 
-    // Only run if we are on the homepage (hero exists)
-    if (heroTitleSans) {
+    // If we're not on a page with a hero, just clear the hiding class.
+    if (!heroTitleSans) {
+      revealAll();
+    } else {
+      try {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
         tl.fromTo(heroTitleSans,
@@ -52,6 +68,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 { opacity: 1, duration: 1 },
                 "-=0.4"
             );
+      } catch (err) {
+        // Any GSAP runtime error → reveal everything statically.
+        console.error('[hero] Animation failed, revealing statically:', err);
+        revealAll();
+      }
     }
 
     /* ==========================================
@@ -124,32 +145,45 @@ document.addEventListener("DOMContentLoaded", () => {
         const manifestoA = document.querySelector(".manifesto-a");
         const manifestoDesc = document.querySelector(".manifesto-desc");
 
-        const manTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: manifestoSection,
-                start: "top 60%", // triggers when top of section hits 60% of viewport
-                once: true
-            }
-        });
+        try {
+            const manTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: manifestoSection,
+                    start: "top 60%", // triggers when top of section hits 60% of viewport
+                    once: true
+                }
+            });
 
-        manTl.fromTo(manifestoQ,
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-        )
-            .fromTo(manifestoDivider,
-                { scaleY: 0, opacity: 0 },
-                { scaleY: 1, opacity: 1, duration: 0.8, ease: "power2.out", transformOrigin: "top" },
-                "-=0.4"
-            )
-            .fromTo(manifestoA,
+            manTl.fromTo(manifestoQ,
                 { y: 50, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
-                "-=0.4"
+                { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
             )
-            .fromTo(manifestoDesc,
-                { y: 30, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
-                "-=0.6"
-            );
+                .fromTo(manifestoDivider,
+                    { scaleY: 0, opacity: 0 },
+                    { scaleY: 1, opacity: 1, duration: 0.8, ease: "power2.out", transformOrigin: "top" },
+                    "-=0.4"
+                )
+                .fromTo(manifestoA,
+                    { y: 50, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
+                    "-=0.4"
+                )
+                .fromTo(manifestoDesc,
+                    { y: 30, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
+                    "-=0.6"
+                );
+        } catch (err) {
+            console.error('[manifesto] ScrollTrigger animation failed:', err);
+        }
     }
-});
+  }
+
+  // Handle the race condition: this script may load before OR after DOMContentLoaded
+  // depending on script ordering and network. Both cases are covered.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();

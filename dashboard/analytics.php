@@ -10,15 +10,15 @@ $pdo = db();
 $org = current_org();
 $isAdmin = current_admin() !== null;
 
-// Για οργανισμό: φιλτράρισμα δεδομένων μόνο για τους δικούς του εράνους
-// Για admin: όλα τα δεδομένα της πλατφόρμας
+// Αν υπάρχει org session, ΠΑΝΤΑ φιλτράρουμε — ακόμα κι αν ο χρήστης είναι και admin
+// Αυτό το endpoint καλείται από το org dashboard, όχι το admin dashboard
 $orgFilter = '';
 $params = [];
 
-if ($org && !$isAdmin) {
+if ($org) {
     $orgFilter = 'AND c.org_id = :org_id';
     $params[':org_id'] = (int) $org['id'];
-} elseif (!$isAdmin && !$org) {
+} elseif (!$isAdmin) {
     // Μη εξουσιοδοτημένη πρόσβαση
     echo json_encode(['error' => 'Unauthorized']);
     exit;

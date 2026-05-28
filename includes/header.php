@@ -42,6 +42,41 @@ $metaUrl = isset($pageUrl) ? $pageUrl : (isset($_SERVER['HTTPS']) ? 'https' : 'h
 
   <link rel="stylesheet"
     href="<?php echo BASE_URL; ?>/public/css/style.css?v=<?php echo filemtime(__DIR__ . '/../public/css/style.css'); ?>">
+
+<?php if (!empty($loadGsap)): ?>
+  <!-- Preload GSAP early so it's ready by the time the body parses -->
+  <link rel="preload" as="script"
+        href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        crossorigin="anonymous">
+<?php endif; ?>
+
+<!-- INLINE GUARD: must be inline + synchronous + in <head> to prevent FOUC.
+     Only hides hero elements if we're confident JS+GSAP will run.
+     Safety net auto-reveals after 2s if animations never start. -->
+<?php if (!empty($loadGsap)): ?>
+<script>
+  (function () {
+    var html = document.documentElement;
+    // Mark that JS is running — CSS uses this to apply opacity:0
+    html.classList.add('js-ready');
+
+    // Safety net: if GSAP hasn't taken over within 2s, reveal everything.
+    // This covers CDN failures, SRI mismatches, network timeouts, JS errors.
+    window.__heroRevealTimeout = setTimeout(function () {
+      html.classList.add('js-failed');
+      html.classList.remove('js-ready');
+    }, 2000);
+
+    // Also reveal if the user has reduced-motion preference
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      clearTimeout(window.__heroRevealTimeout);
+      html.classList.add('js-failed');
+      html.classList.remove('js-ready');
+    }
+  })();
+</script>
+<?php endif; ?>
+
   <script defer
     src="<?php echo BASE_URL; ?>/public/js/app.js?v=<?php echo filemtime(__DIR__ . '/../public/js/app.js'); ?>"></script>
 </head>

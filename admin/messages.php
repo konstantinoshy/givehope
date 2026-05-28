@@ -152,7 +152,7 @@ function buildMessagesUrl($params = []) {
                     </button>
                   <?php endif; ?>
                 </form>
-                <form method="post" style="display: inline;" onsubmit="return confirm('Διαγραφή μηνύματος;');">
+                <form method="post" style="display: inline;" data-confirm="Διαγραφή μηνύματος;">
                   <?php echo csrf_field(); ?>
                   <input type="hidden" name="message_id" value="<?php echo (int) $m['id']; ?>">
                   <button type="submit" name="action" value="delete" class="btn" style="padding: 4px 10px; font-size: 12px; color: #dc3545;">

@@ -7,10 +7,13 @@ if (!function_exists('secure_session_start')) {
         if (session_status() !== PHP_SESSION_NONE) {
             return;
         }
+        // Ορισμός διάρκειας session στον server για 1 ημέρα (86400 δευτερόλεπτα)
+        ini_set('session.gc_maxlifetime', '86400');
+
         $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
             || (($_SERVER['SERVER_PORT'] ?? '') === '443');
         session_set_cookie_params([
-            'lifetime' => 0,
+            'lifetime' => 86400, // 1 ημέρα (αντί για 0 ώστε να μην σβήνει με το κλείσιμο του tab)
             'path'     => '/',
             'domain'   => '',
             'secure'   => $isHttps,
@@ -59,7 +62,7 @@ if (!function_exists('send_security_headers')) {
 secure_session_start();
 send_security_headers();
 
-define('AUTH_REFRESH_INTERVAL', 300); // 5 λεπτά
+define('AUTH_REFRESH_INTERVAL', 30); // 30 δευτερόλεπτα
 
 function _needs_refresh(string $key): bool {
     $tsKey = $key . '_refreshed_at';

@@ -147,7 +147,7 @@ $defaultImage = 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=
               <a class="btn"
                 href="<?php echo BASE_URL; ?>/campaign-edit.php?id=<?php echo (int) $c['id']; ?>">Επεξεργασία</a>
               <form method="post" action="<?php echo BASE_URL; ?>/campaign-delete.php" style="display:inline;"
-                onsubmit="return confirm('Σίγουρα θέλετε να διαγράψετε αυτόν τον έρανο;');">
+                data-confirm="Σίγουρα θέλετε να διαγράψετε αυτόν τον έρανο;">
                 <?php echo csrf_field(); ?>
                 <input type="hidden" name="id" value="<?php echo (int) $c['id']; ?>">
                 <button type="submit" class="btn danger">Διαγραφή</button>
