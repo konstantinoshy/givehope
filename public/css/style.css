@@ -694,13 +694,13 @@ html.js-ready .hero-trust {
 .telemetry-container {
   margin: 40px 0;
   height: 80px;
-  background: var(--charcoal);
+  background: rgba(46, 64, 54, 0.05);
+  border: 1px solid rgba(46, 64, 54, 0.1);
   border-radius: var(--radius);
   padding: 16px;
   display: flex;
   align-items: flex-start;
-  color: #34D399;
-
+  color: var(--text);
 }
 
 .typewriter-text {
@@ -709,6 +709,7 @@ html.js-ready .hero-trust {
 }
 
 .cursor {
+  color: var(--clay);
   animation: blink 1s step-end infinite;
 }
 
