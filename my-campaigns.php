@@ -46,7 +46,7 @@ $defaultImage = 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=
 <div style="max-width: 1100px; margin: 0 auto; padding: 32px 24px;">
   <?php if ($flash): ?>
     <div class="notice <?php echo e($flash['type']); ?>" style="margin-bottom: 20px;">
-      <?php echo $flash['message']; ?>
+      <?php echo strip_tags($flash['message'], '<strong><em><br>'); ?>
     </div>
   <?php endif; ?>
 

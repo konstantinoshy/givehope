@@ -42,6 +42,15 @@ function is_post(): bool
     return $_SERVER['REQUEST_METHOD'] === 'POST';
 }
 
+function is_safe_image_url(string $url): bool
+{
+    if (!filter_var($url, FILTER_VALIDATE_URL)) {
+        return false;
+    }
+    $scheme = strtolower((string) parse_url($url, PHP_URL_SCHEME));
+    return in_array($scheme, ['http', 'https'], true);
+}
+
 // Καταγραφή επεξεργασίας (πίνακας data_processing_log)
 function logDataProcessing(PDO $pdo, string $entityType, $entityId, string $action, string $actorType, $actorId, ?string $description = null): void
 {

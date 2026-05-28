@@ -80,7 +80,9 @@ if (is_post()) {
     $imageUrl = trim($_POST['image_url'] ?? '');
     
     // Επικύρωση δεδομένων
-    if (mb_strlen($title, 'UTF-8') < 10) {
+    if ($imageUrl !== '' && !is_safe_image_url($imageUrl)) {
+        $error = "Το URL εικόνας δεν είναι έγκυρο (επιτρέπονται μόνο http/https).";
+    } elseif (mb_strlen($title, 'UTF-8') < 10) {
         $error = "Ο τίτλος πρέπει να έχει τουλάχιστον 10 χαρακτήρες.";
     } elseif (mb_strlen($description, 'UTF-8') < 50) {
         $error = "Η περιγραφή πρέπει να έχει τουλάχιστον 50 χαρακτήρες.";

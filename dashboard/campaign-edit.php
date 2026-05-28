@@ -28,17 +28,23 @@ if (is_post()) {
 
   $title = trim($_POST['title'] ?? '');
   $description = trim($_POST['description'] ?? '');
-  $status = $_POST['status'] ?? 'approved';
   $targetAmount = (int) ($_POST['target_amount'] ?? 0);
   $imageUrl = trim($_POST['image_url'] ?? '');
 
-  if (mb_strlen($title, 'UTF-8') < 5) {
+  $newStatus = $campaign['status'];
+  if (isset($_POST['mark_completed']) && $campaign['status'] === 'approved') {
+    $newStatus = 'completed';
+  }
+
+  if ($imageUrl !== '' && !is_safe_image_url($imageUrl)) {
+    $error = "Το URL εικόνας δεν είναι έγκυρο (επιτρέπονται μόνο http/https).";
+  } elseif (mb_strlen($title, 'UTF-8') < 5) {
     $error = "Ο τίτλος πρέπει να έχει τουλάχιστον 5 χαρακτήρες.";
   } elseif (mb_strlen($description, 'UTF-8') < 15) {
     $error = "Η περιγραφή πρέπει να έχει τουλάχιστον 15 χαρακτήρες.";
   } else {
     $upd = $pdo->prepare("
-            UPDATE campaigns 
+            UPDATE campaigns
             SET title = :t, description = :d, type = :ty, target_amount = :ta, status = :s, image_url = :img
             WHERE id = :id AND org_id = :oid
         ");
@@ -47,7 +53,7 @@ if (is_post()) {
       ':d' => $description,
       ':ty' => 'money',
       ':ta' => max(100, $targetAmount),
-      ':s' => in_array($status, ['approved', 'completed']) ? $status : $campaign['status'],
+      ':s' => $newStatus,
       ':img' => ($imageUrl === '' ? null : $imageUrl),
       ':id' => $id,
       ':oid' => $orgId,
@@ -91,12 +97,12 @@ if (is_post()) {
       <input name="image_url" type="url" value="<?php echo e($campaign['image_url'] ?? ''); ?>"
         placeholder="https://...">
 
-      <label>Κατάσταση</label>
-      <select name="status">
-        <option value="approved" <?php echo $campaign['status'] === 'approved' ? 'selected' : ''; ?>>✓ Ενεργός</option>
-        <option value="completed" <?php echo $campaign['status'] === 'completed' ? 'selected' : ''; ?>>🎉 Ολοκληρώθηκε
-        </option>
-      </select>
+      <?php if ($campaign['status'] === 'approved'): ?>
+      <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; margin-bottom: 16px;">
+        <input type="checkbox" name="mark_completed" value="1" style="width: 18px; height: 18px;">
+        <span>Σήμανση ως Ολοκληρώθηκε</span>
+      </label>
+      <?php endif; ?>
 
       <label>Στόχος (€) *</label>
       <input name="target_amount" type="number" min="100" required
