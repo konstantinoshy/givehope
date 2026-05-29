@@ -7,6 +7,7 @@ if (!isset($pdo)) {
 $pendingCountSidebar = $pendingCount ?? $pdo->query("SELECT COUNT(*) FROM campaigns WHERE status = 'pending'")->fetchColumn();
 $reportsCountSidebar = $reportsCount ?? $pdo->query("SELECT COUNT(*) FROM reports WHERE status = 'new'")->fetchColumn();
 $messagesCountSidebar = $pdo->query("SELECT COUNT(*) FROM messages WHERE status = 'new'")->fetchColumn();
+$gdprPendingCount = $pdo->query("SELECT COUNT(*) FROM gdpr_requests WHERE status IN ('pending','verified')")->fetchColumn();
 
 // Ενεργή σελίδα
 $current_page = basename($_SERVER['PHP_SELF']);
@@ -84,6 +85,18 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <span>Μηνύματα</span>
             <?php if ($messagesCountSidebar > 0): ?><span class="sidebar-badge">
                     <?php echo $messagesCountSidebar; ?>
+                </span>
+            <?php endif; ?>
+        </a>
+        <a href="<?php echo BASE_URL; ?>/admin/gdpr.php"
+            class="<?php echo $current_page == 'gdpr.php' ? 'active' : ''; ?>">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <span>GDPR</span>
+            <?php if ($gdprPendingCount > 0): ?><span class="sidebar-badge">
+                    <?php echo $gdprPendingCount; ?>
                 </span>
             <?php endif; ?>
         </a>
