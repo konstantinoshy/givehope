@@ -405,6 +405,10 @@ body {
 }
 
 .table-scroll .table {
+    width: 100%;
+}
+
+.table-scroll .table.table-wide {
     min-width: 960px;
 }
 

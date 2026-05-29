@@ -186,7 +186,7 @@ $openStatuses = ['pending', 'verified', 'processing'];
         </div>
       <?php else: ?>
         <div class="table-scroll">
-        <table class="table">
+        <table class="table table-wide">
           <thead>
             <tr>
               <th>Ημ/νία</th>
