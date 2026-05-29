@@ -185,17 +185,17 @@ $openStatuses = ['pending', 'verified', 'processing'];
           <p class="muted">Δεν υπάρχουν αιτήματα GDPR.</p>
         </div>
       <?php else: ?>
-        <div style="overflow-x: auto;">
+        <div class="table-scroll">
         <table class="table">
           <thead>
             <tr>
               <th>Ημ/νία</th>
               <th>Τύπος</th>
-              <th>Αιτών</th>
+              <th class="col-requester">Αιτών</th>
               <th>Email</th>
               <th>Κατάσταση</th>
               <th>Χειρισμός</th>
-              <th>Ενέργειες</th>
+              <th class="col-actions">Ενέργειες</th>
             </tr>
           </thead>
           <tbody>
@@ -204,9 +204,9 @@ $openStatuses = ['pending', 'verified', 'processing'];
               <tr style="<?php echo $isOpen ? '' : 'opacity: 0.6;'; ?>">
                 <td class="small"><?php echo date('d/m/Y H:i', strtotime($r['created_at'])); ?></td>
                 <td><?php echo e($typeLabels[$r['type']] ?? $r['type']); ?></td>
-                <td>
+                <td class="col-requester">
                   <?php if (!empty($r['requester_name'])): ?>
-                    <?php echo e($r['requester_name']); ?><br>
+                    <?php echo e(mb_strimwidth($r['requester_name'], 0, 60, '...', 'UTF-8')); ?><br>
                   <?php endif; ?>
                   <span class="small muted">
                     <?php echo e($requesterTypeLabels[$r['requester_type']] ?? $r['requester_type']); ?>
@@ -230,15 +230,14 @@ $openStatuses = ['pending', 'verified', 'processing'];
                     <span class="muted">—</span>
                   <?php endif; ?>
                 </td>
-                <td>
+                <td class="col-actions">
                   <?php if ($isOpen): ?>
-                    <form method="post" style="display: flex; flex-direction: column; gap: 6px;">
+                    <form method="post" class="gdpr-action-form">
                       <?php echo csrf_field(); ?>
                       <input type="hidden" name="action" value="update_status">
                       <input type="hidden" name="request_id" value="<?php echo (int) $r['id']; ?>">
-                      <input type="text" name="rejection_reason" placeholder="Λόγος απόρριψης" maxlength="1000"
-                        style="width: 100%; box-sizing: border-box;">
-                      <div style="display: flex; gap: 6px;">
+                      <input type="text" name="rejection_reason" placeholder="Λόγος απόρριψης" maxlength="1000">
+                      <div class="gdpr-action-btns">
                         <button type="submit" name="status" value="completed" class="btn primary"
                           onclick="return confirm('Σήμανση του αιτήματος ως ολοκληρωμένο;');">
                           Ολοκλήρωση
@@ -269,7 +268,7 @@ $openStatuses = ['pending', 'verified', 'processing'];
           <p class="muted">Δεν υπάρχουν logs.</p>
         </div>
       <?php else: ?>
-        <div style="overflow-x: auto;">
+        <div class="table-scroll">
         <table class="table">
           <thead>
             <tr>

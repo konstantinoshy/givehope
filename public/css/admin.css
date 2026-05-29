@@ -397,6 +397,53 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
+/* Horizontal scroll wrapper — works on all screen widths, not only ≤1400px */
+.table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+}
+
+.table-scroll .table {
+    min-width: 960px;
+}
+
+.table-scroll .col-requester {
+    max-width: 200px;
+    word-break: break-all;
+}
+
+.table-scroll .col-actions {
+    min-width: 180px;
+    width: 180px;
+    vertical-align: top;
+}
+
+.gdpr-action-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 160px;
+}
+
+.gdpr-action-form input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gdpr-action-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.gdpr-action-btns .btn {
+    width: 100%;
+    white-space: nowrap;
+    justify-content: center;
+    text-align: center;
+}
+
 /* ============ Admin Button Overrides ============ */
 .btn {
     background: var(--bg-white);
