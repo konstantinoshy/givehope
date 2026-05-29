@@ -185,6 +185,7 @@ $openStatuses = ['pending', 'verified', 'processing'];
           <p class="muted">Δεν υπάρχουν αιτήματα GDPR.</p>
         </div>
       <?php else: ?>
+        <div style="overflow-x: auto;">
         <table class="table">
           <thead>
             <tr>
@@ -231,11 +232,12 @@ $openStatuses = ['pending', 'verified', 'processing'];
                 </td>
                 <td>
                   <?php if ($isOpen): ?>
-                    <form method="post" style="display: flex; flex-direction: column; gap: 6px; min-width: 200px;">
+                    <form method="post" style="display: flex; flex-direction: column; gap: 6px;">
                       <?php echo csrf_field(); ?>
                       <input type="hidden" name="action" value="update_status">
                       <input type="hidden" name="request_id" value="<?php echo (int) $r['id']; ?>">
-                      <input type="text" name="rejection_reason" placeholder="Λόγος (μόνο για απόρριψη)" maxlength="1000">
+                      <input type="text" name="rejection_reason" placeholder="Λόγος απόρριψης" maxlength="1000"
+                        style="width: 100%; box-sizing: border-box;">
                       <div style="display: flex; gap: 6px;">
                         <button type="submit" name="status" value="completed" class="btn primary"
                           onclick="return confirm('Σήμανση του αιτήματος ως ολοκληρωμένο;');">
@@ -255,6 +257,7 @@ $openStatuses = ['pending', 'verified', 'processing'];
             <?php endforeach; ?>
           </tbody>
         </table>
+        </div>
       <?php endif; ?>
     </div>
 
@@ -266,6 +269,7 @@ $openStatuses = ['pending', 'verified', 'processing'];
           <p class="muted">Δεν υπάρχουν logs.</p>
         </div>
       <?php else: ?>
+        <div style="overflow-x: auto;">
         <table class="table">
           <thead>
             <tr>
@@ -303,6 +307,7 @@ $openStatuses = ['pending', 'verified', 'processing'];
             <?php endforeach; ?>
           </tbody>
         </table>
+        </div>
       <?php endif; ?>
     </div>
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
